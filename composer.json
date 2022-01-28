@@ -1,0 +1,15 @@
+{
+    "name": "paloma/dev-news",
+    "description": "Blog professionnel",
+    "type": "project",
+    "authors": [
+        {
+            "name": "PalomaAlma",
+            "email": "palomavacheron@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "twig/twig": "^3.3"
+    }
+}
