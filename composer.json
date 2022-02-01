@@ -1,0 +1,19 @@
+{
+    "name": "paloma/dev-news",
+    "type": "project",
+    "authors": [
+        {
+            "name": "PalomaAlma",
+            "email": "palomavacheron@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.0"
+    }
+}
