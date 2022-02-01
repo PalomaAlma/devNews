@@ -1,12 +1,4 @@
 <?php
-/*try
-{
-    $bdd = new PDO('mysql:host=localhost;dbname=devnews;charset=utf8mb4', 'root', '');
-}
-catch(Exception $e)
-{
-    die('Erreur : '.$e->getMessage());
-}*/
 require '../vendor/autoload.php';
 use App\Controller\HomeController;
 
