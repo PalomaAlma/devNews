@@ -1,0 +1,150 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600&family=Rationale&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #404040;
+    background-color: #F2F2F2;
+    /*background-color: #FDFDFD;*/
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    color: #33332F;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #000000;
+}
+
+a:not([href]):not([class]), a:not([href]):not([class]):hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+.sticky-top {
+    background-color: #F2F2F2;
+}
+
+aside {
+    position: fixed;
+    top: 12%;
+    right: 2%;
+}
+
+aside i {
+    font-size: 1.5rem;;
+}
+
+aside li {
+    margin: 1rem
+}
+
+main {
+    margin-right: 20rem !important;
+}
+
+.card {
+    box-shadow:.4rem .4rem .8rem #D9D9D9,
+    -.2rem -.2rem 1.8rem #FFFFFF;
+    border-radius: .8rem;
+    border: 0;
+    background-color: rgba(0,0,0,0);
+}
+
+.btn {
+    border-radius: .4rem;
+    background-color: #E67039;
+    box-shadow:inset .4rem .4rem .4rem #FF7C40,
+    inset -.3rem -.3rem .5rem #BF5D30;
+    color: #33190D;
+    border: 0;
+    opacity: .95;
+    font-weight: 600;
+}
+.btn:hover {
+    opacity: 1;
+}
+.btn:active {
+    box-shadow:inset .3rem .3rem .3rem #BF5D30,
+    inset -.2rem -.2rem .4rem #FF7C40;
+    opacity: 1;
+}
+
+h1 {
+    font-size: 2.5rem !important;
+}
+
+h2 {
+    font-size: 2rem !important;
+}
+
+h1, h2 {
+    font-family: 'Rationale', sans-serif;
+    text-shadow: .1rem .1rem .01rem #D9D9D9,
+    -.1rem -.1rem .01rem #FFFFFF;
+    /*color: #33190D;
+    text-shadow: .01rem .01rem .01rem #FF7C40,
+     -.01rem -.01rem .01rem #FF7C40;*/
+    opacity: 1;
+    font-weight: bold;
+}
+.active {
+    text-decoration: none !important;
+    color: #E67039;
+    font-weight: 600;
+}
+nav a {
+    margin: 0 .8rem;
+}
+h3 {
+    text-shadow: .1rem .1rem .01rem #FFFFFF,
+    -.1rem -.1rem .01rem #D9D9D9;
+}
+
+.input-group-text {
+    background-color: transparent;
+    box-shadow:.2rem .2rem .2rem #FFFFFF inset,
+    -.1rem -.1rem .4rem #D9D9D9 inset;
+    border: none;
+    width: 20%;
+}
+
+.input-group>.form-control, .input-group>.form-select {
+    background-color: transparent;
+    box-shadow:.2rem .2rem .2rem #D9D9D9 inset,
+    -.1rem -.1rem .4rem #FFFFFF inset;
+    border: none;
+}
+
+ul li {
+    margin: 1rem 0;
+}
+
+
+@media (max-width: 992px) {
+    /*    body {
+            font-size: 2rem !important;
+        }*/
+
+    main {
+        margin: auto !important;
+    }
+
+    .w-50.p-4 {
+        width: auto !important;
+    }
+    .card-img-top {
+        width: 100% !important;
+    }
+
+    section ul li {
+        margin: 1.2rem;
+    }
+}
