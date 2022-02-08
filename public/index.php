@@ -6,6 +6,3 @@ $loader = new \Twig\Loader\FilesystemLoader('../View');
 $twig = new \Twig\Environment($loader, [
     'cache' => 'compilation_cache',
 ]);
-
-$homeController = new HomeController($twig);
-$homeController->index();
