@@ -1,8 +1,12 @@
 <?php
-require '../vendor/autoload.php';
-use App\Controller\HomeController;
 
-$loader = new \Twig\Loader\FilesystemLoader('../View');
-$twig = new \Twig\Environment($loader, [
-    'cache' => 'compilation_cache',
-]);
+use Router\Router;
+
+require '../vendor/autoload.php';
+
+$router = new Router($_GET['url']);
+
+$router->get('/', 'App\Controller\HomeController@index');
+$router->get('/show', 'App\Controller\HomeController@show');
+
+$router->run();
