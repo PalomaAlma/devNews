@@ -1,0 +1,15 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+    {% block main %}
+        <div class="card mx-auto text-center">
+            <div class="card-body">
+                <h2 class="card-title">{{ message.subject }}</h2>
+                <p class="card-text">{{ message.content }}</p>
+                <small>de {{ message.email }}, {{ message.firstname }} {{ message.lastname }}</small>
+                <br>
+                <small>le {{ message.createdAt|date("d/m/Y") }}</small>
+            </div>
+
+{#            <a href="mailto:{{ message.email }}" class="btn">Répondre à {{ message.firstname }} {{ message.lastname }}</a>#}
+        </div>
+    {% endblock %}
