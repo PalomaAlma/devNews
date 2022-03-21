@@ -12,10 +12,12 @@
     "autoload": {
         "psr-4": {
             "App\\": "src",
-            "Router\\": "routes/"
+            "Router\\": "routes/",
+            "Database\\": "database/"
         }
     },
     "require": {
-        "twig/twig": "^3.3"
+        "twig/twig": "^3.3",
+        "ext-pdo": "*"
     }
 }
