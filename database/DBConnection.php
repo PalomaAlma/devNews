@@ -7,10 +7,10 @@ use PDO;
 class DBConnection
 {
 
-    private string $dbname;
-    private string $host;
-    private string $username;
-    private string $password;
+    private $dbname;
+    private $host;
+    private $username;
+    private $password;
 
     public function __construct(string $dbname, string $host, string $username, string $password)
     {
@@ -22,7 +22,14 @@ class DBConnection
 
     public function getPDO(): PDO
     {
-
         return $this->pdo ?? $this->pdo = new PDO("mysql:dbname={$this->dbname};host={$this->host}", $this->username, $this->password);
+    }
+
+    public function query($statement)
+    {
+        $req = $this->getPDO()->query($statement);
+        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+
+        return $datas;
     }
 }
