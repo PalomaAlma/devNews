@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+    {% block main %}
+
+        <section class="py-5 text-center container w-100">
+                    <h1 class="text-center">Paloma Vacheron Picco</h1>
+            <img src="/img/profil.jpg" alt="" class="img-fluid img-thumbnail w-25">
+                    <p class="lead text-muted">Développeur Web - PHP Symfony</p>
+            <a href="/pdf/CV_2022-02-03_Paloma_Vacheron.pdf" class="btn">Visualisez mon CV</a>
+        </section>
+
+        <div class="album">
+            <div class="my-4 py-4">
+                <h2>Retrouvez moi sur ...</h2>
+                <ul class="list-unstyled text-center">
+                    <li>
+                        <a href="https://www.linkedin.com/in/paloma-vacheron/" class="btn w-25 w-25">
+                            <i class="fa fa-linkedin px-2"></i>
+                            <br>LinkedIn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/PalomaAlma" class="btn w-25">
+                            <i class="fa fa-github px-2"></i>
+                            <br>GitHub
+                        </a>
+                    </li>
+{#                    <li><a href="">GitLab</a></li>#}
+                    <li>
+                        <a href="https://codepen.io/palomaalma" class="btn w-25">
+                            <i class="fa fa-codepen px-2"></i>
+                            <br>CodePen
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://palomavacheron.com" class="btn w-25">
+                            <i class="fa fa-globe px-2"></i>
+                            <br>Portfolio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="my-4 py-4">
+                <h2>Envoyez moi un message ...</h2>
+                <div class="card m-4">
+                    <div class="card-body">
+                        <form action="/" method="POST" class="text-center">
+                            <div class="input-group my-2">
+                                <label for="email" class="input-group-text">E-mail</label>
+                                <input type="email" name="email" id="email" class="form-control">
+                            </div>
+                            <div class="input-group my-2">
+                                <label for="firstname" class="input-group-text">Prénom</label>
+                                <input type="text" name="firstname" id="firstname" class="form-control">
+                            </div>
+                            <div class="input-group my-2">
+                                <label for="lastname" class="input-group-text">Nom</label>
+                                <input type="text" name="lastname" id="lastname" class="form-control">
+                            </div>
+                            <div class="input-group my-2">
+                                <label for="subject" class="input-group-text">Objet</label>
+                                <select name="subject" id="subject" class="form-select">
+                                    <option value="Demande d'information">Demande d'information</option>
+                                    <option value="Demande de service">Demande de service</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                            <div class="input-group my-2">
+                                <label for="content" class="input-group-text">Message</label>
+                                <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
+                            </div>
+                            <input type="hidden" name="createdAt" value="{{ 'now'|date('Y-m-d') }}">
+                            <button type="submit" class="btn mx-auto w-100">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="album py-5 d-none">
+            <div class="container mx-2">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col"><div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}

@@ -97,8 +97,8 @@ h1, h2 {
 }
 .active {
     text-decoration: none !important;
-    color: #E67039;
-    font-weight: 600;
+    color: #E67039 !important;
+    font-weight: 600 !important;
 }
 nav a {
     margin: 0 .8rem;
