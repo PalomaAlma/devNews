@@ -1,0 +1,26 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+    {% block main %}
+
+        <section class="py-5 text-center container w-100">
+
+            <ul class="list-group">
+            {% for post in posts %}
+                <li class="list-group-item my-0">
+                    <h2>{{ post.title }}</h2>
+                    {{ post.chapo|striptags }}
+                    <br>
+                    <small class="text-muted">
+                        Créé le {{ post.createdAt|date('d/m/Y') }}, Mis à jour le {{ post.updateAt|date('d/m/Y') }}
+                    </small>
+                    <div class="my-2">
+                        <form action="/admin/post/delete/{{ post.id }}" method="POST">
+                            <a href="/admin/post/show/{{ post.id }}" class="btn"><i class="fa-solid fa-eye"></i></a>
+                            <a href="/admin/post/edit/{{ post.id }}" class="btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <button type="submit" class="btn"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+    {% endblock %}

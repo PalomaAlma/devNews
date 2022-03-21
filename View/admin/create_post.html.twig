@@ -1,0 +1,34 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+    {% block main %}
+
+        <section class="py-5 text-center container w-100">
+            <form action="{% if post %}/admin/post/edit/{{ post.id }}{% else %}/admin/post/create{% endif %}" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Titre</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}">
+                </div>
+                <div class="mb-3">
+                    <label for="chapo" class="form-label">Chapo</label>
+                    <input type="text" class="form-control" id="chapo" name="chapo" value="{{ post.chapo }}">
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Contenu</label>
+                    <input id="content" value="{{ post.content|raw }}" type="hidden" name="content">
+                    <trix-editor input="content" class="form-control"></trix-editor>
+                    {#<textarea class="form-control" id="content" name="content">{{ post.content }}</textarea>#}
+                </div>
+                <input type="hidden" value="1" name="admin_id">
+                <input type="hidden" value="{% if '/admin/posts' in url %}{{ 'now'|date('Y-m-d') }}{% else %}{{ post.createdAt|date('Y-m-d') }}{% endif %}" name="createdAt">
+                <input type="hidden" value="{{ 'now'|date('Y-m-d') }}" name="updateAt">
+                <button type="submit" class="btn">Publier</button>
+            </form>
+        </section>
+    {% endblock %}
+
+{% block express_js %}
+    <script>
+        var element = document.querySelector("trix-editor")
+        element.editor.getDocument()  // is a Trix.Editor i
+    </script>
+{% endblock %}

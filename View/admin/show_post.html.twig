@@ -1,0 +1,17 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+    {% block main %}
+        <div class="card mx-auto text-center">
+            <div class="card-body">
+                <h2 class="card-title">{{ post.title }}</h2>
+                <p class="card-text">
+                    <small>{{ post.chapo }}</small>
+                    <br>
+                    {{ post.content|raw }}
+                </p>
+                <form action="/admin/post/delete/{{ post.id }}" method="POST">
+                    <a href="/admin/post/edit/{{ post.id }}" class="btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <button type="submit" class="btn"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+    {% endblock %}
