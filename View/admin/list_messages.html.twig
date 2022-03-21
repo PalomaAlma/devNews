@@ -1,0 +1,21 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+    {% block main %}
+
+        <section class="py-5 text-center container w-100">
+
+        <ul class="list-group">
+            {% for message in messages %}
+                <li class="list-group-item my-0">
+                    {{ message.subject|striptags }}
+                    <br>
+                    <small>
+                        de {{ message.email }}
+                    </small>
+                    <div>
+                        <a href="/admin/message/{{ message.id }}">Afficher</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
