@@ -20,4 +20,6 @@ $router->post('/admin/post/edit/:id', 'App\Controller\Admin\PostController@updat
 $router->get('/admin/message', 'App\Controller\Admin\MessageController@listMessages');
 $router->get('/admin/message/:id', 'App\Controller\Admin\MessageController@show');
 
+$router->get('/posts', 'App\Controller\PostController@index');
+
 $router->run();
