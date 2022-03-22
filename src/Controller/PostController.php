@@ -14,4 +14,13 @@ class PostController extends AbstractController {
         ]);
     }
 
+    function showPost(int $id) {
+        $post = (new Post($this->getDB()))->findById($id);
+
+        $this->twig->display('show_post.html.twig', [
+            'post' => $post
+        ]);
+    }
+
+
 }

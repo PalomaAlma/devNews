@@ -21,5 +21,7 @@ $router->get('/admin/message', 'App\Controller\Admin\MessageController@listMessa
 $router->get('/admin/message/:id', 'App\Controller\Admin\MessageController@show');
 
 $router->get('/posts', 'App\Controller\PostController@index');
+$router->get('/post/show/:id', 'App\Controller\PostController@showPost');
+$router->post('/post/show/:id', 'App\Controller\PostController@createComment');
 
 $router->run();
