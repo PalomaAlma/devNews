@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+    {% block main %}
+
+        <section class="py-5 text-center container w-100">
+
+            <ul class="list-unstyled">
+            {% for post in posts %}
+                <li class="card">
+                    <h2>{{ post.title }}</h2>
+                    {{ post.chapo|striptags }}
+                    <br>
+                    <small class="text-muted">
+                        Créé le {{ post.createdAt|date('d/m/Y') }}, Mis à jour le {{ post.updateAt|date('d/m/Y') }}
+                    </small>
+                    <div class="my-2">
+                            <a href="/post/show/{{ post.id }}" class="btn"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+    {% endblock %}
