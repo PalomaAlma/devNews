@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+    {% block main %}
+
+        <section class="py-5 text-center container w-100">
+
+            <div class="card mx-auto text-center">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text">
+                        <small>{{ post.chapo }}</small>
+                        <br>
+                        {{ post.content|raw }}
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    {% endblock %}
