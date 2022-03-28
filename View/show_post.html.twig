@@ -3,7 +3,6 @@
     {% block main %}
 
         <section class="py-5 text-center container w-100">
-
             <div class="card mx-auto text-center">
                 <div class="card-body">
                     <h2 class="card-title">{{ post.title }}</h2>
@@ -14,10 +13,9 @@
                     </p>
                 </div>
             </div>
-
         </section>
 
-        <form action="/post/show/{{ post.id }}" method="POST" class="text-center">
+        <form action="/post/show/{{ post.id }}" method="POST" class="text-center container">
             <h2>Laisser un commentaire</h2>
             <div class="input-group my-2">
                 <label for="firstname" class="input-group-text">Prénom</label>
@@ -34,7 +32,19 @@
             <input type="hidden" name="createdAt" value="{{ 'now'|date('Y-m-d') }}">
             <input type="hidden" name="isValid" value="0">
             <input type="hidden" name="post_id" value="{{ post.id }}">
-            <button type="submit" class="btn mx-auto w-100">Envoyer</button>
+            <button type="submit" class="btn mx-auto w-25">Envoyer</button>
         </form>
+
+        <section class="container">
+            <ul class="list-unstyled list-group mt-4">
+                {% for comment in post.comments %}
+                <li class="list-group-item border-0">
+                    <h3>Commentaire de {{ comment.firstname }} {{ comment.lastname }}</h3>
+                    <p>{{ comment.content|raw }}</p>
+                    <p>Écrit le {{ comment.createdAt }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
 
     {% endblock %}
