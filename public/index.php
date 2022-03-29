@@ -17,6 +17,7 @@ $router->get('/admin/post/show/:id', 'App\Controller\Admin\PostController@showPo
 $router->post('/admin/post/delete/:id', 'App\Controller\Admin\PostController@delete');
 $router->get('/admin/post/edit/:id', 'App\Controller\Admin\PostController@edit');
 $router->post('/admin/post/edit/:id', 'App\Controller\Admin\PostController@update');
+$router->post('/admin/comment/valid/:id', 'App\Controller\Admin\PostController@validComment');
 $router->get('/admin/message', 'App\Controller\Admin\MessageController@listMessages');
 $router->get('/admin/message/:id', 'App\Controller\Admin\MessageController@show');
 

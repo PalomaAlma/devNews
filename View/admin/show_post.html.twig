@@ -1,7 +1,7 @@
 {% extends 'admin/baseAdmin.html.twig' %}
 
     {% block main %}
-        <div class="card mx-auto text-center">
+        <div class="card mx-auto text-center my-5">
             <div class="card-body">
                 <h2 class="card-title">{{ post.title }}</h2>
                 <p class="card-text">
@@ -15,4 +15,31 @@
                 </form>
             </div>
         </div>
+
+        <section class="container">
+            <ul class="list-unstyled list-group mt-4">
+                {% for comment in post.comments %}
+                    <li class="list-group-item border-0 {% if comment.isValid == 0 %}opacity{% endif %}">
+                        <h3>Commentaire de {{ comment.firstname }} {{ comment.lastname }}</h3>
+                        <p>{{ comment.content|raw }}</p>
+                        <p>Écrit le {{ comment.createdAt }}</p>
+                        <form action="/admin/comment/valid/{{ comment.id }}" method="POST" class="text-end">
+                            {% if comment.isValid == 0 %}
+                                <input type="hidden" name="isValid" value="1">
+                            {% else %}
+                                <input type="hidden" name="isValid" value="0">
+                            {% endif %}
+                            <button type="submit" class="btn">
+                                {% if comment.isValid %}
+                                    Mettre Hors Ligne
+                                {% else %}
+                                    Valider
+                                {% endif %}
+                                {#<i class="fa-solid fa-trash-can"></i>#}
+                            </button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
     {% endblock %}

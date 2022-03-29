@@ -148,6 +148,10 @@ ul li.list-group-item p:last-child {
     font-size: small;
 }
 
+.opacity {
+    opacity: 0.5
+}
+
 @media (max-width: 992px) {
     /*    body {
             font-size: 2rem !important;

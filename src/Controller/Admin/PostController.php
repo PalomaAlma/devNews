@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AbstractController;
+use App\Model\Comment;
 use App\Model\Post;
 use Database\DBConnection;
 
@@ -59,6 +60,17 @@ class PostController extends AbstractController {
     function delete(int $id) {
         $post = new Post($this->getDB());
         $result = $post->delete($id);
+
+        if ($result) {
+            return header('Location: /admin/posts');
+        }
+    }
+
+    function validComment(int $id) {
+        $comment = (new Comment($this->getDB()))->findById($id);
+        $result = $comment->update($id, $_POST);
+//        $post = $comment->getPost()->getId();
+//        var_dump($post); die();
 
         if ($result) {
             return header('Location: /admin/posts');

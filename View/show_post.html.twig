@@ -38,11 +38,13 @@
         <section class="container">
             <ul class="list-unstyled list-group mt-4">
                 {% for comment in post.comments %}
+                    {% if comment.isValid %}
                 <li class="list-group-item border-0">
                     <h3>Commentaire de {{ comment.firstname }} {{ comment.lastname }}</h3>
                     <p>{{ comment.content|raw }}</p>
                     <p>Écrit le {{ comment.createdAt }}</p>
                 </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </section>
