@@ -69,11 +69,10 @@ class PostController extends AbstractController {
     function validComment(int $id) {
         $comment = (new Comment($this->getDB()))->findById($id);
         $result = $comment->update($id, $_POST);
-//        $post = $comment->getPost()->getId();
-//        var_dump($post); die();
+        $post = $comment->post_id;
 
         if ($result) {
-            return header('Location: /admin/posts');
+            return header('Location: /admin/post/show/'.$post);
         }
     }
 
