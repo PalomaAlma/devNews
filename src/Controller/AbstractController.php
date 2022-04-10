@@ -14,8 +14,12 @@ abstract class AbstractController {
     public function __construct(DBConnection $db) {
         $this->loader = new FilesystemLoader('../View');
         $this->twig = new Environment($this->loader, [
-            'cache' => 'compilation_cache',
+            'cache' => false,
         ]);
+        if (session_status() === PHP_SESSION_NONE)
+        {
+            session_start();
+        }
         $this->db = $db;
     }
 
