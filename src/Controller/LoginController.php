@@ -15,9 +15,10 @@ class LoginController extends AbstractController {
         $user = (new User($this->getDB()))->getByEmail($_POST['email']);
 //        var_dump($user->password);
         if (password_verify($_POST['password'], $user->password)) {
-//            var_dump($user);
+//            var_dump($user); die();
             $_SESSION['auth'] = $user->admin;
-            if ($this->isAdmin()) {
+            if ($this->isAdmin())
+            {
                 return header('Location: /admin');
             }
             return header('Location: /posts');
