@@ -20,6 +20,7 @@ abstract class AbstractController {
         {
             session_start();
         }
+        $this->twig->addGlobal('session', $_SESSION);
         $this->db = $db;
     }
 
