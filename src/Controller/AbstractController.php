@@ -26,4 +26,15 @@ abstract class AbstractController {
     protected function getDB() {
         return $this->db;
     }
+
+    protected function isAdmin() {
+        if (isset($_SESSIION['auth']) && $_SESSION['auth'] === 1)
+        {
+//            var_dump($_SESSION['auth']); die();
+            return true;
+        } else {
+//            var_dump($_SESSION['auth']);die();
+            return header('Location: /posts');
+        }
+    }
 }
