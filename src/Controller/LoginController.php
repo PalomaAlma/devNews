@@ -27,4 +27,10 @@ class LoginController extends AbstractController {
         $this->twig->display('home.html.twig');
     }
 
+    public function logout() {
+        session_destroy();
+
+        return header('Location: /login');
+    }
+
 }
