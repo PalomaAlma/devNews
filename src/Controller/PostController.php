@@ -26,8 +26,6 @@ class PostController extends AbstractController
         ]);
     }
 
-}
-
     public function createComment(int $id)
     {
         $post = (new Post($this->getDB()))->findById($id);
