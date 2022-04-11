@@ -78,8 +78,6 @@ class PostController extends AbstractController
         }
     }
 
-}
-
     function validComment(int $id)
     {
         $comment = (new Comment($this->getDB()))->findById($id);
