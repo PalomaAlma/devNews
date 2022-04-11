@@ -7,24 +7,29 @@ use App\Model\Comment;
 use App\Model\Post;
 use Database\DBConnection;
 
-class PostController extends AbstractController {
+class PostController extends AbstractController
+{
 
-    function create() {
+    function create()
+    {
         $post = new Post($this->getDB());
+
         $this->twig->display('admin/create_post.html.twig');
     }
 
-    function createPost() {
+    function createPost()
+    {
         $post = new Post($this->getDB());
         $result = $post->create($_POST);
-//        var_dump($result);
 
-        if ($result) {
+        if ($result)
+        {
             return header('Location: /admin/posts');
         }
     }
 
-    function listPosts() {
+    function listPosts()
+    {
         $post = new Post($this->getDB());
         $posts = $post->all();
 
@@ -33,7 +38,8 @@ class PostController extends AbstractController {
         ]);
     }
 
-    function showPost(int $id) {
+    function showPost(int $id)
+    {
         $post = (new Post($this->getDB()))->findById($id);
 
         $this->twig->display('admin/show_post.html.twig', [
@@ -41,37 +47,47 @@ class PostController extends AbstractController {
         ]);
     }
 
-    function edit(int $id) {
+    function edit(int $id)
+    {
         $post = (new Post($this->getDB()))->findById($id);
+
         $this->twig->display('admin/create_post.html.twig', [
             'post' => $post
         ]);
     }
 
-    function update(int $id) {
+    function update(int $id)
+    {
         $post = new Post($this->getDB());
         $result = $post->update($id, $_POST);
 
-        if ($result) {
+        if ($result)
+        {
             return header('Location: /admin/posts');
         }
     }
 
-    function delete(int $id) {
+    function delete(int $id)
+    {
         $post = new Post($this->getDB());
         $result = $post->delete($id);
 
-        if ($result) {
+        if ($result)
+        {
             return header('Location: /admin/posts');
         }
     }
 
-    function validComment(int $id) {
+}
+
+    function validComment(int $id)
+    {
         $comment = (new Comment($this->getDB()))->findById($id);
         $result = $comment->update($id, $_POST);
         $post = $comment->post_id;
 
-        if ($result) {
+        if ($result)
+        {
             return header('Location: /admin/post/show/'.$post);
         }
     }

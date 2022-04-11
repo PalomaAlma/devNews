@@ -4,9 +4,11 @@ namespace App\Controller;
 use App\Model\Comment;
 use App\Model\Post;
 
-class PostController extends AbstractController {
+class PostController extends AbstractController
+{
 
-    public function index() {
+    public function index()
+    {
         $post = new Post($this->getDB());
         $posts = $post->all();
 
@@ -15,7 +17,8 @@ class PostController extends AbstractController {
         ]);
     }
 
-    function showPost(int $id) {
+    function showPost(int $id)
+    {
         $post = (new Post($this->getDB()))->findById($id);
 
         $this->twig->display('show_post.html.twig', [
@@ -23,13 +26,16 @@ class PostController extends AbstractController {
         ]);
     }
 
+}
 
-    public function createComment(int $id) {
+    public function createComment(int $id)
+    {
         $post = (new Post($this->getDB()))->findById($id);
         $comment = new Comment($this->getDB());
         $result = $comment->create($_POST);
-//        var_dump($result);
-        if ($result) {
+      
+        if ($result)
+        {
             return header('Location: /post/show/'.$id);
         }
 
