@@ -8,7 +8,7 @@ class User extends Repository {
 
     public function getByEmail(string $email): User
     {
-        return $this->read('SELECT * FROM ' . $this->table . ' WHERE email = ?', [$email], true);
+        return $this->read('SELECT * FROM admin WHERE email = ?', [$email], true);
     }
 
 }
