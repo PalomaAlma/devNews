@@ -50,7 +50,7 @@ main {
     margin-right: 20rem !important;
 }
 
-.card {
+.card, ul.list-group {
     box-shadow:.4rem .4rem .8rem #D9D9D9,
     -.2rem -.2rem 1.8rem #FFFFFF;
     border-radius: .8rem;
@@ -123,10 +123,34 @@ h3 {
     border: none;
 }
 
-ul li {
+ul li:not(.list-group-item) {
     margin: 1rem 0;
 }
 
+ul li.list-group-item {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    /*border-radius: 25%;*/
+    padding: 2rem;
+}
+
+ul li.list-group-item h3 {
+    font-size: 1.3rem;
+}
+
+ul li.list-group-item p {
+    text-align: center;
+    font-size: large;
+}
+
+ul li.list-group-item p:last-child {
+    text-align: end;
+    font-size: small;
+}
+
+.opacity {
+    opacity: 0.5
+}
 
 @media (max-width: 992px) {
     /*    body {
@@ -144,7 +168,7 @@ ul li {
         width: 100% !important;
     }
 
-    section ul li {
+    section ul li:not(.list-group-item) {
         margin: 1.2rem;
     }
 }

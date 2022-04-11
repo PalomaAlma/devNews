@@ -12,6 +12,17 @@
                     <br>
                     <small class="text-muted">
                         Créé le {{ post.createdAt|date('d/m/Y') }}, Mis à jour le {{ post.updateAt|date('d/m/Y') }}
+                        {% set i = 0 %}
+                        {% set j = 0 %}
+                        {% for c in post.comments %}
+                            {% if c.isValid == 1 %}
+                                {% set i=i+1 %}
+                            {% else %}
+                                {% set j=j+1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <br>{{ i }} commentaire{% if post.comments|length > 1 %}s  validés{% else %} validé{% endif %}
+                        <br>{{ j }} commentaire{% if post.comments|length > 1 %}s  non validés{% else %} non validé{% endif %}
                     </small>
                     <div class="my-2">
                         <form action="/admin/post/delete/{{ post.id }}" method="POST">
