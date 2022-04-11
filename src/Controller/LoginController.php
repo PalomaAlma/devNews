@@ -35,4 +35,20 @@ class LoginController extends AbstractController {
         return header('Location: /login');
     }
 
+    function register() {
+        $this->twig->display('register.html.twig');
+    }
+
+    function registerPost() {
+        $user = new User($this->getDB());
+        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+//        var_dump($_POST); die();
+        $result = $user->create($_POST);
+//        var_dump($result);
+
+        if ($result) {
+            return header('Location: /register');
+        }
+    }
+
 }
