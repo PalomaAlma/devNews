@@ -8,7 +8,7 @@ use Database\DBConnection;
 
 class MessageController extends AbstractController {
 
-    function listMessages() {
+    public function listMessages() {
         $message = new Message($this->getDB());
         $messages = $message->all();
 
@@ -17,7 +17,7 @@ class MessageController extends AbstractController {
         ]);
     }
 
-    function show(int $id) {
+    public function show(int $id) {
         $message = (new Message($this->getDB()))->findById($id);
 
         $this->twig->display('admin/show_message.html.twig', [
@@ -25,7 +25,7 @@ class MessageController extends AbstractController {
         ]);
     }
 
-    function delete(int $id) {
+    public function delete(int $id) {
         $message = new Message($this->getDB());
         $result = $message->delete($id);
 

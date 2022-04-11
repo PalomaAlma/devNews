@@ -17,7 +17,7 @@ class PostController extends AbstractController
         ]);
     }
 
-    function showPost(int $id)
+    public function showPost(int $id)
     {
         $post = (new Post($this->getDB()))->findById($id);
 
