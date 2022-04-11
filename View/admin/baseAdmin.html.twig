@@ -35,32 +35,10 @@
                 </div>
             </li>
             <li class="nav-item">
-                <button class="nav-link {% if '/admin/comment' in url %}active{% endif %} w-100 text-body collapsed" data-bs-toggle="collapse" data-bs-target="#comment-collapse" aria-expanded="true">
-                    <i class="fa-solid fa-comment"></i>
-                    Commentaires
-                    <i class="fa-solid fa-angle-down"></i>
-                </button>
-                <div class="collapse" id="comment-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-center">
-                        <li><a href="#" class="link-dark rounded">Tous</a></li>
-                        <li><a href="#" class="link-dark rounded">Récents</a></li>
-                        <li><a href="#" class="link-dark rounded">Signalés</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item">
-                <button class="nav-link {% if '/admin/message' in url %}active{% endif %} w-100 text-body collapsed" data-bs-toggle="collapse" data-bs-target="#message-collapse" aria-expanded="true">
+                <a href="/admin/message" class="nav-link {% if '/admin/message' in url %}active{% endif %} w-100 text-body text-center">
                     <i class="fa-solid fa-envelope"></i>
                     Messages
-                    <i class="fa-solid fa-angle-down"></i>
-                </button>
-                <div class="collapse" id="message-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-center">
-                        <li><a href="/admin/message" class="link-dark rounded">Tous</a></li>
-                        <li><a href="#" class="link-dark rounded">Récents</a></li>
-                        <li><a href="#" class="link-dark rounded">Archivés</a></li>
-                    </ul>
-                </div>
+                </a>
             </li>
         </ul>
         <hr>
