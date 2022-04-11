@@ -14,12 +14,27 @@ abstract class AbstractController {
     public function __construct(DBConnection $db) {
         $this->loader = new FilesystemLoader('../View');
         $this->twig = new Environment($this->loader, [
-            'cache' => 'compilation_cache',
+            'cache' => false,
         ]);
+        if (session_status() === PHP_SESSION_NONE)
+        {
+            session_start();
+        }
+        $this->twig->addGlobal('session', $_SESSION);
         $this->db = $db;
     }
 
     protected function getDB() {
         return $this->db;
+    }
+
+    protected function isAdmin() {
+        if (isset($_SESSION['auth']) && $_SESSION['auth'] === '1')
+        {
+//            var_dump($_SESSION['auth']); die();
+            return true;
+        } else {
+            return header('Location: /posts');
+        }
     }
 }
