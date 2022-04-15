@@ -17,7 +17,7 @@ class LoginController extends AbstractController
     {
         $user = (new User($this->getDB()))->getByEmail($_POST['email']);
 
-        if (password_verify($_POST['password'], $user->password))
+        if (password_verify($_POST['password'], $user->password) && $user->isValid === "1")
         {
             $_SESSION['auth'] = $user->admin;
             $_SESSION['user'] = $user->id;
