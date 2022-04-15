@@ -21,7 +21,6 @@ class LoginController extends AbstractController
         {
             $_SESSION['auth'] = $user->admin;
             $_SESSION['user'] = $user->id;
-//            var_dump($_SESSION['user']); die();
 
             if ($this->isAdmin())
             {

@@ -9,7 +9,7 @@ use Database\DBConnection;
 class UserController extends AbstractController
 {
 
-    function listUsers()
+    public function listUsers()
     {
         $user = new User($this->getDB());
         $users = $user->all();
@@ -20,7 +20,7 @@ class UserController extends AbstractController
     }
 
 
-    function validUser(int $id)
+    public function validUser(int $id)
     {
         $user = (new User($this->getDB()))->findById($id);
         $result = $user->update($id, $_POST);
@@ -31,7 +31,7 @@ class UserController extends AbstractController
         }
     }
 
-    function delete(int $id)
+    public function delete(int $id)
     {
         $user = new User($this->getDB());
         $result = $user->delete($id);
