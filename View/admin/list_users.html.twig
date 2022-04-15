@@ -1,0 +1,54 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+    {% block main %}
+
+        <section class="py-5 text-center container w-100">
+
+            <ul class="list-group">
+            {% for user in users %}
+                <li class="list-group-item my-0 {% if user.isValid == 0 %}opacity{% endif %}">
+                    <h2>{{ user.firstname }} {{ user.lastname }}</h2>
+                    <br>
+                    <p>Email: {{ user.email }}</p>
+                    {#<small class="text-muted">
+                        Créé le {{ user.createdAt|date('d/m/Y') }}, Mis à jour le {{ user.updateAt|date('d/m/Y') }}
+                        {% set i = 0 %}
+                        {% set j = 0 %}
+                        {% for c in user.comments %}
+                            {% if c.isValid == 1 %}
+                                {% set i=i+1 %}
+                            {% else %}
+                                {% set j=j+1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <br>{{ i }} commentaire{% if user.comments|length > 1 %}s  validés{% else %} validé{% endif %}
+                        <br>{{ j }} commentaire{% if user.comments|length > 1 %}s  non validés{% else %} non validé{% endif %}
+                    </small>#}
+                    <div class="my-2">
+                        <form action="/admin/user/show/{{ user.id }}" method="POST">
+
+                            {% if user.isValid == 0 %}
+                                <input type="hidden" name="isValid" value="1">
+                            {% else %}
+                                <input type="hidden" name="isValid" value="0">
+                            {% endif %}
+
+                            <button type="submit" class="btn">
+                                {% if user.isValid %}
+                                    Désactiver
+                                {% else %}
+                                    Valider
+                                {% endif %}
+                                {#<i class="fa-solid fa-trash-can"></i>#}
+                            </button>
+                        </form>
+                    </div>
+                    <div class="my-2">
+                        <form action="/admin/user/delete/{{ user.id }}" method="POST">
+                            <button type="submit" class="btn"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+    {% endblock %}
