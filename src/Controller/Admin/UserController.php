@@ -19,23 +19,16 @@ class UserController extends AbstractController
         ]);
     }
 
-    function showUser(int $id)
-    {
-        $user = (new User($this->getDB()))->findById($id);
-
-        $this->twig->display('admin/show_user.html.twig', [
-            'user' => $user
-        ]);
-    }
 
     function validUser(int $id)
     {
         $user = (new User($this->getDB()))->findById($id);
         $result = $user->update($id, $_POST);
 
-        $this->twig->display('admin/list_user.html.twig', [
-            'user' => $user
-        ]);
+        if ($result)
+        {
+            return header('Location: /admin/users');
+        }
     }
 
     function delete(int $id)
