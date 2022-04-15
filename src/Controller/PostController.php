@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Model\Comment;
 use App\Model\Post;
+use App\Model\User;
 
 class PostController extends AbstractController
 {
@@ -21,13 +22,24 @@ class PostController extends AbstractController
     {
         $post = (new Post($this->getDB()))->findById($id);
 
-        $this->twig->display('show_post.html.twig', [
-            'post' => $post
-        ]);
+        if (isset($_SESSION['user']))
+        {
+            $user = (new User($this->getDB()))->findById($_SESSION['user']);
+            $this->twig->display('show_post.html.twig', [
+                'post' => $post,
+                'user' => $user
+            ]);
+        } else
+        {
+            $this->twig->display('show_post.html.twig', [
+                'post' => $post
+            ]);
+        }
     }
-
+  
     public function createComment(int $id)
     {
+        $user = $_SESSION['user'];
         $post = (new Post($this->getDB()))->findById($id);
         $comment = new Comment($this->getDB());
         $result = $comment->create($_POST);
@@ -38,7 +50,8 @@ class PostController extends AbstractController
         }
 
         $this->twig->display('show_post.html.twig', [
-            'post' => $post
+            'post' => $post,
+            'user' => $user
         ]);
     }
 

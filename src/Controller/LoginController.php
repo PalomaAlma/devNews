@@ -20,6 +20,8 @@ class LoginController extends AbstractController
         if (password_verify($_POST['password'], $user->password))
         {
             $_SESSION['auth'] = $user->admin;
+            $_SESSION['user'] = $user->id;
+//            var_dump($_SESSION['user']); die();
 
             if ($this->isAdmin())
             {
