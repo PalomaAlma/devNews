@@ -10,14 +10,14 @@ use Database\DBConnection;
 class PostController extends AbstractController
 {
 
-    function create()
+    public function create()
     {
         $post = new Post($this->getDB());
 
         $this->twig->display('admin/create_post.html.twig');
     }
 
-    function createPost()
+    public function createPost()
     {
         $post = new Post($this->getDB());
         $result = $post->create($_POST);
@@ -28,7 +28,7 @@ class PostController extends AbstractController
         }
     }
 
-    function listPosts()
+    public function listPosts()
     {
         $post = new Post($this->getDB());
         $posts = $post->all();
@@ -38,7 +38,7 @@ class PostController extends AbstractController
         ]);
     }
 
-    function showPost(int $id)
+    public function showPost(int $id)
     {
         $post = (new Post($this->getDB()))->findById($id);
 
@@ -47,7 +47,7 @@ class PostController extends AbstractController
         ]);
     }
 
-    function edit(int $id)
+    public function edit(int $id)
     {
         $post = (new Post($this->getDB()))->findById($id);
 
@@ -56,7 +56,7 @@ class PostController extends AbstractController
         ]);
     }
 
-    function update(int $id)
+    public function update(int $id)
     {
         $post = new Post($this->getDB());
         $result = $post->update($id, $_POST);
@@ -67,7 +67,7 @@ class PostController extends AbstractController
         }
     }
 
-    function delete(int $id)
+    public function delete(int $id)
     {
         $post = new Post($this->getDB());
         $result = $post->delete($id);
@@ -78,9 +78,7 @@ class PostController extends AbstractController
         }
     }
 
-}
-
-    function validComment(int $id)
+    public function validComment(int $id)
     {
         $comment = (new Comment($this->getDB()))->findById($id);
         $result = $comment->update($id, $_POST);
