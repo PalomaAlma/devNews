@@ -8,6 +8,9 @@
             {% for user in users %}
                 <li class="list-group-item my-0 {% if user.isValid == 0 %}opacity{% endif %}">
                     <h2>{{ user.firstname }} {{ user.lastname }}</h2>
+                    {% if user.admin is same as("1") %}
+                        <span class="badge badge-secondary bg-dark mb-4">Admin</span>
+                    {% endif %}
                     <br>
                     <p>Email: {{ user.email }}</p>
                     {#<small class="text-muted">
