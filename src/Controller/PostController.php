@@ -36,8 +36,7 @@ class PostController extends AbstractController
             ]);
         }
     }
-
-
+  
     public function createComment(int $id)
     {
         $user = $_SESSION['user'];
