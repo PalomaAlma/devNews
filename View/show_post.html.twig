@@ -17,7 +17,7 @@
 
         {% if user %}
         <form action="/post/show/{{ post.id }}" method="POST" class="text-center container">
-            <h2>Laisser un commentaire</h2>
+            <h3>Laisser un commentaire</h3>
             <div class="input-group my-2">
                 <label for="firstname" class="input-group-text">Prénom</label>
 {#                {{ dump(user) }}#}
@@ -44,7 +44,7 @@
                 {% for comment in post.comments %}
                     {% if comment.isValid %}
                 <li class="list-group-item border-0">
-                    <h3>Commentaire de {{ comment.firstname }} {{ comment.lastname }}</h3>
+                    <h4 class="h5">Commentaire de {{ comment.firstname }} {{ comment.lastname|slice(0,1) }}.</h4>
                     <p>{{ comment.content|raw }}</p>
                     <p>Écrit le {{ comment.createdAt }}</p>
                 </li>
