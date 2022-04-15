@@ -78,7 +78,6 @@ class PostController extends AbstractController
         }
     }
 
-}
 
     function validComment(int $id)
     {
