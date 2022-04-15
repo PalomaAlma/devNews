@@ -15,25 +15,29 @@
             </div>
         </section>
 
+        {% if user %}
         <form action="/post/show/{{ post.id }}" method="POST" class="text-center container">
             <h2>Laisser un commentaire</h2>
             <div class="input-group my-2">
                 <label for="firstname" class="input-group-text">Prénom</label>
-                <input type="text" name="firstname" id="firstname" class="form-control">
+{#                {{ dump(user) }}#}
+                <input type="text" name="firstname" id="firstname" class="form-control" value="{{ user.firstname }}" readonly>
             </div>
             <div class="input-group my-2">
                 <label for="lastname" class="input-group-text">Nom</label>
-                <input type="text" name="lastname" id="lastname" class="form-control">
+                <input type="text" name="lastname" id="lastname" class="form-control" value="{{ user.lastname }}" readonly>
             </div>
             <div class="input-group my-2">
                 <label for="content" class="input-group-text">Commentaire</label>
-                <input type="text" name="content" id="content" class="form-control">
+                <textarea name="content" id="content"  class="form-control"></textarea>
             </div>
             <input type="hidden" name="createdAt" value="{{ 'now'|date('Y-m-d') }}">
             <input type="hidden" name="isValid" value="0">
             <input type="hidden" name="post_id" value="{{ post.id }}">
+            <input type="hidden" name="user_id" value="{{ user.id }}">
             <button type="submit" class="btn mx-auto w-25">Envoyer</button>
         </form>
+        {% endif %}
 
         <section class="container">
             <ul class="list-unstyled list-group mt-4">
