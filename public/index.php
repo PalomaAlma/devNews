@@ -15,7 +15,7 @@ $router->get('/logout', 'App\Controller\LoginController@logout');
 $router->get('/register', 'App\Controller\LoginController@register');
 $router->post('/register', 'App\Controller\LoginController@registerPost');
 $router->get('/admin', 'App\Controller\Admin\DashboardController@index');
-$router->get('/admin/posts', 'App\Controller\Admin\PostController@listPosts');
+$router->get('/admin/posts/:page', 'App\Controller\Admin\PostController@listPosts');
 $router->get('/admin/post/create', 'App\Controller\Admin\PostController@create');
 $router->post('/admin/post/create', 'App\Controller\Admin\PostController@createPost');
 $router->get('/admin/post/show/:id', 'App\Controller\Admin\PostController@showPost');

@@ -28,13 +28,23 @@ class PostController extends AbstractController
         }
     }
 
-    public function listPosts()
+    public function listPosts(int $page)
     {
         $post = new Post($this->getDB());
         $posts = $post->all();
+        $totalPosts = count($posts);
+        $articlePerPage = 5;
+        $nbPages = ceil($totalPosts / $articlePerPage);
+
+        $offset = ($page - 1) * $articlePerPage;
+
+        $posts = $post->read('SELECT * FROM post LIMIT 5 OFFSET '.$offset.';');
+
 
         $this->twig->display('admin/list_posts.html.twig', [
-            'posts' => $posts
+            'posts' => $posts,
+            'page' => $page,
+            'nbPages' => $nbPages
         ]);
     }
 
