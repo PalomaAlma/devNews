@@ -156,6 +156,15 @@ ul li.list-group-item p:last-child {
     opacity: 0.5
 }
 
+nav .pagination {
+    justify-content: center;
+    display: flex;
+}
+
+nav .pagination li a {
+    margin: 0 !important;
+}
+
 @media (max-width: 992px) {
     /*    body {
             font-size: 2rem !important;
