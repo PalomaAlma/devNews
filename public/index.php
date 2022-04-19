@@ -23,7 +23,7 @@ $router->post('/admin/post/delete/:id', 'App\Controller\Admin\PostController@del
 $router->get('/admin/post/edit/:id', 'App\Controller\Admin\PostController@edit');
 $router->post('/admin/post/edit/:id', 'App\Controller\Admin\PostController@update');
 $router->post('/admin/comment/valid/:id', 'App\Controller\Admin\PostController@validComment');
-$router->get('/admin/message', 'App\Controller\Admin\MessageController@listMessages');
+$router->get('/admin/messages/:page', 'App\Controller\Admin\MessageController@listMessages');
 $router->get('/admin/message/:id', 'App\Controller\Admin\MessageController@show');
 
 $router->get('/posts/:page', 'App\Controller\PostController@index');

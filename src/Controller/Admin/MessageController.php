@@ -8,12 +8,20 @@ use Database\DBConnection;
 
 class MessageController extends AbstractController {
 
-    public function listMessages() {
+    public function listMessages(int $page) {
         $message = new Message($this->getDB());
-        $messages = $message->all();
+        $totalMessages = count($message->all());
+        $articlePerPage = 5;
+        $nbPages = ceil($totalMessages / $articlePerPage);
+
+        $offset = ($page - 1) * $articlePerPage;
+
+        $messages = $message->read('SELECT * FROM message LIMIT 5 OFFSET '.$offset.';');
 
         $this->twig->display('admin/list_messages.html.twig', [
-            'messages' => $messages
+            'messages' => $messages,
+            'page' => $page,
+            'nbPages' => $nbPages
         ]);
     }
 
