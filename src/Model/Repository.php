@@ -27,6 +27,11 @@ abstract class Repository
         return $this->read("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
     }
 
+    public function findByPage(int $page, $offset): array
+    {
+        return $this->read("SELECT * FROM {$this->table} LIMIT 5 OFFSET {$offset}");
+    }
+
     public function create(array $data)
     {
         $first = "";
@@ -68,8 +73,6 @@ abstract class Repository
 
     public function write(string $sql, array $param = null)
     {
-//        $method = is_null($param) ? 'query' : 'prepare';
-
         $stmt = $this->db->getPDO()->prepare($sql);
         $stmt->setfetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
 

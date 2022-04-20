@@ -16,7 +16,7 @@ class MessageController extends AbstractController {
 
         $offset = ($page - 1) * $articlePerPage;
 
-        $messages = $message->read('SELECT * FROM message LIMIT 5 OFFSET '.$offset.';');
+        $messages = $message->findByPage($page, $offset);
 
         $this->twig->display('admin/list_messages.html.twig', [
             'messages' => $messages,

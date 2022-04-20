@@ -38,7 +38,7 @@ class PostController extends AbstractController
 
         $offset = ($page - 1) * $articlePerPage;
 
-        $posts = $post->read('SELECT * FROM post LIMIT 5 OFFSET '.$offset.';');
+        $posts = $post->findByPage($page, $offset);
 
 
         $this->twig->display('admin/list_posts.html.twig', [
