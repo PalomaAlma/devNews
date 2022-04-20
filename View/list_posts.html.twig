@@ -33,7 +33,7 @@
                 {% set k = 0 %}
                 {% for k in 0..nbPages|length() %}
                     {% set k=k+1 %}
-                    <li class="page-item"><a class="page-link" href="/posts/{{ k }}">{{ k }}</a></li>
+                    <li class="page-item"><a class="page-link {% if k is same as(page) %}active{% endif %}" href="/posts/{{ k }}">{{ k }}</a></li>
                 {% endfor %}
                 <li class="page-item"><a class="page-link" href="/posts/{% if page > nbPages|length() %}{{ page }}{% else %}{{ page +1 }}{% endif %}">></a></li>
             </ul>
