@@ -18,7 +18,7 @@
             <span class="fs-4">Espace Administrateur</span>
         </a>
         <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
+        <ul class="nav nav-pills flex-column mb-5">
             <li class="nav-item">
                 <button class="nav-link {% if '/admin/posts' in url %}active{% endif %} collapsed w-100 text-body" data-bs-toggle="collapse" data-bs-target="#post-collapse" aria-expanded="true">
                     <i class="fa-solid fa-newspaper mr-auto"></i>
@@ -40,20 +40,18 @@
                     Messages
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/admin/users" class="nav-link {% if '/admin/users' in url %}active{% endif %} w-100 text-body text-center">
+                    <i class="fa-solid fa-user"></i>
+                    Utilisateurs
+                </a>
+            </li>
         </ul>
         <hr>
-        <div class="dropdown">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>Name</strong>
+        <div class="text-center">
+            <a href="/logout" class="link-dark text-decoration-none">
+                Déconnexion
             </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
         </div>
 </header>
 <main class="container">

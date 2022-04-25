@@ -17,12 +17,15 @@ abstract class AbstractController
         $this->loader = new FilesystemLoader('../View');
         $this->twig = new Environment($this->loader, [
             'cache' => false,
+            'debug' => true,
         ]);
         if (session_status() === PHP_SESSION_NONE)
 
         {
             session_start();
         }
+
+        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
         $this->twig->addGlobal('session', $_SESSION);
         $this->db = $db;
     }
