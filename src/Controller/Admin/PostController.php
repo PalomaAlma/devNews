@@ -24,7 +24,7 @@ class PostController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /admin/posts');
+            return header('Location: /admin/posts/1');
         }
     }
 
@@ -73,7 +73,7 @@ class PostController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /admin/posts');
+            return header('Location: /admin/posts/1');
         }
     }
 
@@ -84,7 +84,7 @@ class PostController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /admin/posts');
+            return header('Location: /admin/posts/1');
         }
     }
 
