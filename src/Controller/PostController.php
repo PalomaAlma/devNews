@@ -8,13 +8,22 @@ use App\Model\User;
 class PostController extends AbstractController
 {
 
-    public function index()
+    public function index(int $page)
     {
         $post = new Post($this->getDB());
         $posts = $post->all();
+        $totalPosts = count($posts);
+        $articlePerPage = 5;
+        $nbPages = ceil($totalPosts / $articlePerPage);
+
+        $offset = ($page - 1) * $articlePerPage;
+
+        $posts = $post->findByPage($page, $offset);
 
         $this->twig->display('list_posts.html.twig', [
-            'posts' => $posts
+            'posts' => $posts,
+            'page' => $page,
+            'nbPages' => $nbPages
         ]);
     }
 

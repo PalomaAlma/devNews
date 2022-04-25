@@ -27,6 +27,11 @@ abstract class Repository
         return $this->read("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
     }
 
+    public function findByPage(int $page, $offset): array
+    {
+        return $this->read("SELECT * FROM {$this->table} LIMIT 5 OFFSET {$offset}");
+    }
+
     public function create(array $data)
     {
         $first = "";

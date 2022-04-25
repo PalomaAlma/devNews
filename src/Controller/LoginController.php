@@ -28,7 +28,7 @@ class LoginController extends AbstractController
                 return header('Location: /admin');
             }
 
-            return header('Location: /posts');
+            return header('Location: /posts/1');
         } else {
 
             return header('Location: /login');

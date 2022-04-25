@@ -24,17 +24,27 @@ class PostController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /admin/posts');
+            return header('Location: /admin/posts/1');
         }
     }
 
-    public function listPosts()
+    public function listPosts(int $page)
     {
         $post = new Post($this->getDB());
         $posts = $post->all();
+        $totalPosts = count($posts);
+        $articlePerPage = 5;
+        $nbPages = ceil($totalPosts / $articlePerPage);
+
+        $offset = ($page - 1) * $articlePerPage;
+
+        $posts = $post->findByPage($page, $offset);
+
 
         $this->twig->display('admin/list_posts.html.twig', [
-            'posts' => $posts
+            'posts' => $posts,
+            'page' => $page,
+            'nbPages' => $nbPages
         ]);
     }
 
@@ -63,7 +73,7 @@ class PostController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /admin/posts');
+            return header('Location: /admin/posts/1');
         }
     }
 
@@ -74,7 +84,7 @@ class PostController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /admin/posts');
+            return header('Location: /admin/posts/1');
         }
     }
 

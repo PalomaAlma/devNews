@@ -43,7 +43,7 @@ abstract class AbstractController
             return true;
         } else
         {
-            return header('Location: /posts');
+            return header('Location: /posts/1');
         }
     }
 }
