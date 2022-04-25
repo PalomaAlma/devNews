@@ -68,7 +68,6 @@ abstract class Repository
 
     public function write(string $sql, array $param = null)
     {
-
         $stmt = $this->db->getPDO()->prepare($sql);
         $stmt->setfetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
 
