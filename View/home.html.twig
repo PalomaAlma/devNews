@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
     {% block main %}
+        {% if messageSent is same as(1) %}
+            <p class="alert alert-success fixed">Votre message à bien été envoyé</p>
+        {% endif %}
 
         <section class="py-5 text-center container w-100">
                     <h1 class="text-center">Paloma Vacheron Picco</h1>
@@ -72,23 +75,6 @@
                             <input type="hidden" name="createdAt" value="{{ 'now'|date('Y-m-d') }}">
                             <button type="submit" class="btn mx-auto w-100">Envoyer</button>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="album py-5 d-none">
-            <div class="container mx-2">
-
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col"><div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn">Go somewhere</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

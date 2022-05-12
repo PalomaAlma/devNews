@@ -13,11 +13,6 @@
 </head>
 <body>
 <header>
-    {% if session.auth is same as "1" %}
-    <div class="alert alert-success mb-0">Vous êtes connecté en tant qu'<a href="/admin">administrateur</a>. </div>
-    {% elseif session.auth is same as "0" %}
-    <div class="alert alert-success mb-0">Vous êtes connecté.</div>
-    {% endif %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Paloma Vacheron Picco</a>
@@ -46,10 +41,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/#contactForm">Contact</a>
                     </li>
-                    {% if session.auth %}
-                    <a href="/logout">Déconnexion</a>
-                    {% endif %}
+{#                    {{ dump(session) }}#}
                 </ul>
+                {% if session.user %}
+                    <div class="nav-item ms-auto text-center">
+                        <span>Vous êtes connecté {% if session.auth %}en tant qu'administrateur{% endif %}</span>
+                        <a href="/logout" class="nav-link">Déconnexion</a>
+                    </div>
+                {% else %}
+                    <div class="nav-item ms-auto"><a href="/login" class="nav-link">Se connecter</a></div>
+                {% endif %}
             </div>
         </div>
     </nav>

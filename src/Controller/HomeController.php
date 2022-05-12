@@ -17,10 +17,15 @@ class HomeController extends AbstractController{
 
         if ($result)
         {
-            return header('Location: /');
+            return header('Location: /sent');
         }
 
         $this->twig->display('home.html.twig');
+    }
+
+    public function messageSent()
+    {
+        $this->twig->display('messageSent.html.twig');
     }
 
 }

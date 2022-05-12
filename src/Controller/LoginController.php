@@ -57,8 +57,13 @@ class LoginController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /register');
+            return header('Location: /thank-you');
         }
+    }
+
+    public function registerDone()
+    {
+        $this->twig->display('registerSent.html.twig');
     }
 
 }
