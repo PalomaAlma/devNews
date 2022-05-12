@@ -9,6 +9,7 @@ $router = new Router($_GET['url']);
 
 $router->get('/', 'App\Controller\HomeController@index');
 $router->post('/', 'App\Controller\HomeController@sendContact');
+$router->get('/sent', 'App\Controller\HomeController@messageSent');
 $router->get('/login', 'App\Controller\LoginController@index');
 $router->post('/login', 'App\Controller\LoginController@login');
 $router->get('/logout', 'App\Controller\LoginController@logout');
