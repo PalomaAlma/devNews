@@ -6,13 +6,13 @@
 
             <ul class="list-group">
             {% for user in users %}
-                <li class="list-group-item my-0 {% if user.isValid == 0 %}opacity{% endif %}">
-                    <h2>{{ user.firstname }} {{ user.lastname }}</h2>
+                <li class="list-group-item my-0">
+                    <h2 class="{% if user.isValid == 0 %}opacity{% endif %}">{{ user.firstname }} {{ user.lastname }}</h2>
                     {% if user.admin is same as("1") %}
                         <span class="badge badge-secondary bg-dark mb-4">Admin</span>
                     {% endif %}
                     <br>
-                    <p>Email: {{ user.email }}</p>
+                    <p class="{% if user.isValid == 0 %}opacity{% endif %}">Email: {{ user.email }}</p>
                     {#<small class="text-muted">
                         Créé le {{ user.createdAt|date('d/m/Y') }}, Mis à jour le {{ user.updateAt|date('d/m/Y') }}
                         {% set i = 0 %}
@@ -36,7 +36,7 @@
                                 <input type="hidden" name="isValid" value="0">
                             {% endif %}
 
-                            <button type="submit" class="btn">
+                            <button type="submit" class="btn btn-z-ind">
                                 {% if user.isValid %}
                                     Désactiver
                                 {% else %}
