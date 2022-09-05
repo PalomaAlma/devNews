@@ -4,8 +4,7 @@ use Router\Router;
 
 require '../vendor/autoload.php';
 
-
-$router = new Router($_GET['url']);
+$router = new Router($_SERVER['REQUEST_URI']);
 
 $router->get('/', 'App\Controller\HomeController@index');
 $router->post('/', 'App\Controller\HomeController@sendContact');
