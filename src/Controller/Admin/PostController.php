@@ -25,14 +25,14 @@ class PostController extends AbstractController
         $this->twig->display('admin/create_post.html.twig');
     }
 
-    public function createPost()
+    public function createPost(): void
     {
         $post = new Post($this->getDB());
         $result = $post->create($_POST);
 
         if ($result)
         {
-            return header('Location: /admin/posts/1');
+            header('Location: /admin/posts/1');
         }
     }
 
@@ -89,29 +89,29 @@ class PostController extends AbstractController
         ]);
     }
 
-    public function update(int $id)
+    public function update(int $id): void
     {
         $post = new Post($this->getDB());
         $result = $post->update($id, $_POST);
 
         if ($result)
         {
-            return header('Location: /admin/posts/1');
+            header('Location: /admin/posts/1');
         }
     }
 
-    public function delete(int $id)
+    public function delete(int $id): void
     {
         $post = new Post($this->getDB());
         $result = $post->delete($id);
 
         if ($result)
         {
-            return header('Location: /admin/posts/1');
+            header('Location: /admin/posts/1');
         }
     }
 
-    public function validComment(int $id)
+    public function validComment(int $id): void
     {
         $comment = (new Comment($this->getDB()))->findById($id);
         $result = $comment->update($id, $_POST);
@@ -119,7 +119,7 @@ class PostController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /admin/post/show/'.$post);
+            header('Location: /admin/post/show/'.$post);
         }
     }
 

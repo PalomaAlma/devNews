@@ -21,7 +21,12 @@ class LoginController extends AbstractController
         $this->twig->display('login.html.twig');
     }
 
-    public function login()
+    /**
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @throws LoaderError
+     */
+    public function login():void
     {
         $user = (new User($this->getDB()))->getByEmail($_POST['email']);
 
@@ -33,23 +38,23 @@ class LoginController extends AbstractController
             if ($this->isAdmin())
             {
 
-                return header('Location: /admin');
+                header('Location: /admin');
             }
 
-            return header('Location: /posts/1');
+            header('Location: /posts/1');
         } else {
 
-            return header('Location: /login');
+            header('Location: /login');
         }
 
         $this->twig->display('home.html.twig');
     }
 
-    public function logout()
+    public function logout(): void
     {
         session_destroy();
 
-        return header('Location: /login');
+        header('Location: /login');
     }
 
     /**
@@ -62,7 +67,7 @@ class LoginController extends AbstractController
         $this->twig->display('register.html.twig');
     }
 
-    public function registerPost()
+    public function registerPost(): void
     {
         $user = new User($this->getDB());
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -70,7 +75,7 @@ class LoginController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /thank-you');
+            header('Location: /thank-you');
         }
     }
 

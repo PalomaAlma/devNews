@@ -24,14 +24,14 @@ class HomeController extends AbstractController{
      * @throws SyntaxError
      * @throws LoaderError
      */
-    public function sendContact()
+    public function sendContact(): void
     {
         $message = new Message($this->getDB());
         $result = $message->create($_POST);
 
         if ($result)
         {
-            return header('Location: /sent');
+            header('Location: /sent');
         }
 
         $this->twig->display('home.html.twig');

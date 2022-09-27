@@ -28,25 +28,25 @@ class UserController extends AbstractController
     }
 
 
-    public function validUser(int $id)
+    public function validUser(int $id): void
     {
         $user = (new User($this->getDB()))->findById($id);
         $result = $user->update($id, $_POST);
 
         if ($result)
         {
-            return header('Location: /admin/users');
+            header('Location: /admin/users');
         }
     }
 
-    public function delete(int $id)
+    public function delete(int $id): void
     {
         $user = new User($this->getDB());
         $result = $user->delete($id);
 
         if ($result)
         {
-            return header('Location: /admin/users');
+            header('Location: /admin/users');
         }
     }
 }

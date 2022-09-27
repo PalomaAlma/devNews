@@ -64,7 +64,7 @@ class PostController extends AbstractController
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function createComment(int $id)
+    public function createComment(int $id): void
     {
         $user = $_SESSION['user'];
         $post = (new Post($this->getDB()))->findById($id);
@@ -73,7 +73,7 @@ class PostController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /post/show/'.$id);
+            header('Location: /post/show/'.$id);
         }
 
         $this->twig->display('show_post.html.twig', [
