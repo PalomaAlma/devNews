@@ -7,7 +7,7 @@ class Post extends Repository {
     protected $table = 'post';
 //    private $comments = array();
 
-    public function getId()
+    public function getId(): int
     {
         return $this->read('SELECT p.id FROM post WHERE id = ?', [$this->id]);
     }

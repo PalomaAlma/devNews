@@ -14,7 +14,8 @@ class DashboardController extends AbstractController {
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function index() {
+    public function index(): void
+    {
         $this->isAdmin();
         $this->twig->display('admin/dashboard.html.twig');
     }
