@@ -35,7 +35,7 @@ abstract class AbstractController
         return $this->db;
     }
 
-    protected function isAdmin()
+    protected function isAdmin(): bool
     {
         if (isset($_SESSION['auth']) && $_SESSION['auth'] === '1')
 

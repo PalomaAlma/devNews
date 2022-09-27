@@ -16,7 +16,7 @@ class LoginController extends AbstractController
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function index()
+    public function index(): void
     {
         $this->twig->display('login.html.twig');
     }
@@ -57,7 +57,7 @@ class LoginController extends AbstractController
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function register()
+    public function register(): void
     {
         $this->twig->display('register.html.twig');
     }
@@ -79,7 +79,7 @@ class LoginController extends AbstractController
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function registerDone()
+    public function registerDone(): void
     {
         $this->twig->display('registerSent.html.twig');
     }

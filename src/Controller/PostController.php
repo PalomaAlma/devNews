@@ -16,7 +16,7 @@ class PostController extends AbstractController
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function index(int $page)
+    public function index(int $page): void
     {
         $post = new Post($this->getDB());
         $posts = $post->all();
@@ -40,7 +40,7 @@ class PostController extends AbstractController
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function showPost(int $id)
+    public function showPost(int $id): void
     {
         $post = (new Post($this->getDB()))->findById($id);
 
@@ -70,7 +70,7 @@ class PostController extends AbstractController
         $post = (new Post($this->getDB()))->findById($id);
         $comment = new Comment($this->getDB());
         $result = $comment->create($_POST);
-      
+
         if ($result)
         {
             return header('Location: /post/show/'.$id);

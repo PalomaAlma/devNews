@@ -14,7 +14,8 @@ class HomeController extends AbstractController{
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function index(){
+    public function index(): void
+    {
         $this->twig->display('home.html.twig');
     }
 
@@ -41,7 +42,7 @@ class HomeController extends AbstractController{
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function messageSent()
+    public function messageSent(): void
     {
         $this->twig->display('messageSent.html.twig');
     }

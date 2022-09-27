@@ -5,11 +5,19 @@ namespace App\Controller\Admin;
 use App\Controller\AbstractController;
 use App\Model\User;
 use Database\DBConnection;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class UserController extends AbstractController
 {
 
-    public function listUsers()
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
+    public function listUsers(): void
     {
         $user = new User($this->getDB());
         $users = $user->all();

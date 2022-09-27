@@ -6,11 +6,19 @@ use App\Controller\AbstractController;
 use App\Model\Comment;
 use App\Model\Post;
 use Database\DBConnection;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class PostController extends AbstractController
 {
 
-    public function create()
+    /**
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @throws LoaderError
+     */
+    public function create(): void
     {
         $post = new Post($this->getDB());
 
@@ -28,7 +36,12 @@ class PostController extends AbstractController
         }
     }
 
-    public function listPosts(int $page)
+    /**
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @throws LoaderError
+     */
+    public function listPosts(int $page): void
     {
         $post = new Post($this->getDB());
         $posts = $post->all();
@@ -48,7 +61,12 @@ class PostController extends AbstractController
         ]);
     }
 
-    public function showPost(int $id)
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
+    public function showPost(int $id): void
     {
         $post = (new Post($this->getDB()))->findById($id);
 
@@ -57,7 +75,12 @@ class PostController extends AbstractController
         ]);
     }
 
-    public function edit(int $id)
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
+    public function edit(int $id):void
     {
         $post = (new Post($this->getDB()))->findById($id);
 
