@@ -4,10 +4,18 @@ namespace App\Controller;
 use App\Model\Comment;
 use App\Model\Post;
 use App\Model\User;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class PostController extends AbstractController
 {
 
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function index(int $page)
     {
         $post = new Post($this->getDB());
@@ -27,6 +35,11 @@ class PostController extends AbstractController
         ]);
     }
 
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function showPost(int $id)
     {
         $post = (new Post($this->getDB()))->findById($id);
@@ -45,7 +58,12 @@ class PostController extends AbstractController
             ]);
         }
     }
-  
+
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function createComment(int $id)
     {
         $user = $_SESSION['user'];

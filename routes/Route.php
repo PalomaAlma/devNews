@@ -6,7 +6,7 @@ use Database\DBConnection;
 
 class Route {
 
-    public $path;
+    public string $path;
     public $action;
     public $matches;
 
@@ -15,7 +15,8 @@ class Route {
         $this->action = $action;
     }
 
-    public function matches(string $url) {
+    public function matches(string $url): bool
+    {
         $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path);
         $pathToMatch = "#^$path$#";
     

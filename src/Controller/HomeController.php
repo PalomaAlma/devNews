@@ -3,13 +3,26 @@ namespace App\Controller;
 
 
 use App\Model\Message;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class HomeController extends AbstractController{
 
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function index(){
         $this->twig->display('home.html.twig');
     }
 
+    /**
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @throws LoaderError
+     */
     public function sendContact()
     {
         $message = new Message($this->getDB());
@@ -23,6 +36,11 @@ class HomeController extends AbstractController{
         $this->twig->display('home.html.twig');
     }
 
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function messageSent()
     {
         $this->twig->display('messageSent.html.twig');

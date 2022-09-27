@@ -10,7 +10,7 @@ abstract class AbstractController
 
     private FilesystemLoader $loader;
     protected Environment $twig;
-    protected $db;
+    protected DBConnection $db;
 
     public function __construct(DBConnection $db)
     {
@@ -30,7 +30,7 @@ abstract class AbstractController
         $this->db = $db;
     }
 
-    protected function getDB()
+    protected function getDB(): DBConnection
     {
         return $this->db;
     }

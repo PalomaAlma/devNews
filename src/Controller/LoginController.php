@@ -4,10 +4,18 @@ namespace App\Controller;
 
 use App\Model\Message;
 use App\Model\User;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class LoginController extends AbstractController
 {
 
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function index()
     {
         $this->twig->display('login.html.twig');
@@ -44,6 +52,11 @@ class LoginController extends AbstractController
         return header('Location: /login');
     }
 
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function register()
     {
         $this->twig->display('register.html.twig');
@@ -61,6 +74,11 @@ class LoginController extends AbstractController
         }
     }
 
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function registerDone()
     {
         $this->twig->display('registerSent.html.twig');

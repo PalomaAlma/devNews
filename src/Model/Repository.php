@@ -7,7 +7,7 @@ use PDO;
 abstract class Repository
 {
 
-    protected $db;
+    protected DBConnection $db;
     protected $table;
 
     public function __construct(DBConnection $db)
@@ -32,7 +32,7 @@ abstract class Repository
         return $this->read("SELECT * FROM {$this->table} LIMIT 5 OFFSET {$offset}");
     }
 
-    public function create(array $data)
+    public function create(array $data): bool
     {
         $first = "";
         $second = "";
@@ -49,7 +49,7 @@ abstract class Repository
         return $this->write("INSERT INTO {$this->table} ($first) VALUES ($second)", $data);
     }
 
-    public function update(int $id, array $data)
+    public function update(int $id, array $data): bool
     {
         $sql = "";
         $i = 1;
@@ -71,7 +71,7 @@ abstract class Repository
         return $this->write("DELETE FROM {$this->table} WHERE id = ?", [$id]);
     }
 
-    public function write(string $sql, array $param = null)
+    public function write(string $sql, array $param = null): bool
     {
         $stmt = $this->db->getPDO()->prepare($sql);
         $stmt->setfetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
