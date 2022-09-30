@@ -4,6 +4,9 @@ namespace App\Model;
 
 class Comment extends Repository {
 
+    /**
+     * @var string
+     */
     protected $table = 'comment';
 
 }

@@ -15,6 +15,7 @@ class MessageController extends AbstractController {
      * @throws RuntimeError
      * @throws SyntaxError
      * @throws LoaderError
+     * show all messages
      */
     public function listMessages(int $page): void
     {
@@ -38,6 +39,7 @@ class MessageController extends AbstractController {
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * show one message
      */
     public function show(int $id): void
     {

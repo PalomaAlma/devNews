@@ -13,6 +13,7 @@ class HomeController extends AbstractController{
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * home view
      */
     public function index(): void
     {
@@ -23,6 +24,7 @@ class HomeController extends AbstractController{
      * @throws RuntimeError
      * @throws SyntaxError
      * @throws LoaderError
+     * send message from contact form
      */
     public function sendContact(): void
     {
@@ -41,6 +43,7 @@ class HomeController extends AbstractController{
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * confirmation after sent message from contact form
      */
     public function messageSent(): void
     {

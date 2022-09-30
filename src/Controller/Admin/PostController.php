@@ -17,6 +17,7 @@ class PostController extends AbstractController
      * @throws RuntimeError
      * @throws SyntaxError
      * @throws LoaderError
+     * create post form
      */
     public function create(): void
     {
@@ -25,6 +26,10 @@ class PostController extends AbstractController
         $this->twig->display('admin/create_post.html.twig');
     }
 
+    /**
+     * @return void
+     * create post in DB
+     */
     public function createPost(): void
     {
         $post = new Post($this->getDB());
@@ -40,6 +45,7 @@ class PostController extends AbstractController
      * @throws RuntimeError
      * @throws SyntaxError
      * @throws LoaderError
+     * read all posts
      */
     public function listPosts(int $page): void
     {
@@ -65,6 +71,7 @@ class PostController extends AbstractController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * show one post
      */
     public function showPost(int $id): void
     {
@@ -79,6 +86,7 @@ class PostController extends AbstractController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * edit post form
      */
     public function edit(int $id):void
     {
@@ -89,6 +97,11 @@ class PostController extends AbstractController
         ]);
     }
 
+    /**
+     * @param int $id
+     * @return void
+     * edit post in DB
+     */
     public function update(int $id): void
     {
         $post = new Post($this->getDB());
@@ -100,6 +113,11 @@ class PostController extends AbstractController
         }
     }
 
+    /**
+     * @param int $id
+     * @return void
+     * delete post
+     */
     public function delete(int $id): void
     {
         $post = new Post($this->getDB());
@@ -111,6 +129,11 @@ class PostController extends AbstractController
         }
     }
 
+    /**
+     * @param int $id
+     * @return void
+     * valid comment to show in post view
+     */
     public function validComment(int $id): void
     {
         $comment = (new Comment($this->getDB()))->findById($id);

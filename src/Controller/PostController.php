@@ -15,6 +15,7 @@ class PostController extends AbstractController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * show all posts
      */
     public function index(int $page): void
     {
@@ -39,6 +40,7 @@ class PostController extends AbstractController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * show one post
      */
     public function showPost(int $id): void
     {
@@ -63,6 +65,7 @@ class PostController extends AbstractController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * create comment in view post (if user is logged)
      */
     public function createComment(int $id): void
     {

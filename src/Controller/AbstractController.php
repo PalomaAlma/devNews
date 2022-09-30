@@ -17,24 +17,29 @@ abstract class AbstractController
         $this->loader = new FilesystemLoader('../View');
         $this->twig = new Environment($this->loader, [
             'cache' => false,
-            'debug' => true,
         ]);
         if (session_status() === PHP_SESSION_NONE)
 
         {
             session_start();
         }
-
-        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
         $this->twig->addGlobal('session', $_SESSION);
         $this->db = $db;
     }
 
+    /**
+     * @return DBConnection
+     * get DB connection
+     */
     protected function getDB(): DBConnection
     {
         return $this->db;
     }
 
+    /**
+     * @return bool
+     * if user is not admin, redirect to posts views
+     */
     protected function isAdmin(): bool
     {
         if (isset($_SESSION['auth']) && $_SESSION['auth'] === '1')

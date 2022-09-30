@@ -15,6 +15,7 @@ class LoginController extends AbstractController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * login form
      */
     public function index(): void
     {
@@ -25,6 +26,7 @@ class LoginController extends AbstractController
      * @throws RuntimeError
      * @throws SyntaxError
      * @throws LoaderError
+     * login function
      */
     public function login():void
     {
@@ -50,6 +52,10 @@ class LoginController extends AbstractController
         $this->twig->display('home.html.twig');
     }
 
+    /**
+     * @return void
+     * logout function
+     */
     public function logout(): void
     {
         session_destroy();
@@ -61,12 +67,17 @@ class LoginController extends AbstractController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * register form
      */
     public function register(): void
     {
         $this->twig->display('register.html.twig');
     }
 
+    /**
+     * @return void
+     * register in DB
+     */
     public function registerPost(): void
     {
         $user = new User($this->getDB());
@@ -83,6 +94,7 @@ class LoginController extends AbstractController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * confirmation after register
      */
     public function registerDone(): void
     {

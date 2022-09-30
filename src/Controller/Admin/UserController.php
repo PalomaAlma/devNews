@@ -16,6 +16,7 @@ class UserController extends AbstractController
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
+     * show all users
      */
     public function listUsers(): void
     {
@@ -27,7 +28,11 @@ class UserController extends AbstractController
         ]);
     }
 
-
+    /**
+     * @param int $id
+     * @return void
+     * valid user
+     */
     public function validUser(int $id): void
     {
         $user = (new User($this->getDB()))->findById($id);
@@ -39,6 +44,11 @@ class UserController extends AbstractController
         }
     }
 
+    /**
+     * @param int $id
+     * @return void
+     * delete user
+     */
     public function delete(int $id): void
     {
         $user = new User($this->getDB());
