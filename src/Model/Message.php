@@ -4,6 +4,9 @@ namespace App\Model;
 
 class Message extends Repository {
 
+    /**
+     * @var string
+     */
     protected $table = 'message';
 
 }
