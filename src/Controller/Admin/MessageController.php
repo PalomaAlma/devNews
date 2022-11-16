@@ -5,10 +5,20 @@ namespace App\Controller\Admin;
 use App\Controller\AbstractController;
 use App\Model\Message;
 use Database\DBConnection;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class MessageController extends AbstractController {
 
-    public function listMessages(int $page) {
+    /**
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @throws LoaderError
+     * show all messages
+     */
+    public function listMessages(int $page): void
+    {
         $message = new Message($this->getDB());
         $totalMessages = count($message->all());
         $articlePerPage = 5;
@@ -25,21 +35,19 @@ class MessageController extends AbstractController {
         ]);
     }
 
-    public function show(int $id) {
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     * show one message
+     */
+    public function show(int $id): void
+    {
         $message = (new Message($this->getDB()))->findById($id);
 
         $this->twig->display('admin/show_message.html.twig', [
             'message' => $message
         ]);
-    }
-
-    public function delete(int $id) {
-        $message = new Message($this->getDB());
-        $result = $message->delete($id);
-
-        if ($result) {
-            return header('Location: /admin/message');
-        }
     }
 
 }

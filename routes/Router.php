@@ -4,9 +4,9 @@ namespace Router;
 
 class Router {
 
-    public $url;
-    public $routes = [];
-    
+    public string $url;
+    public array $routes = [];
+
     public function __construct($url) {
         $this->url = trim($url, '/');
     }

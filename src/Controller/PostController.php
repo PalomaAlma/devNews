@@ -4,11 +4,20 @@ namespace App\Controller;
 use App\Model\Comment;
 use App\Model\Post;
 use App\Model\User;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class PostController extends AbstractController
 {
 
-    public function index(int $page)
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     * show all posts
+     */
+    public function index(int $page): void
     {
         $post = new Post($this->getDB());
         $posts = $post->all();
@@ -27,7 +36,13 @@ class PostController extends AbstractController
         ]);
     }
 
-    public function showPost(int $id)
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     * show one post
+     */
+    public function showPost(int $id): void
     {
         $post = (new Post($this->getDB()))->findById($id);
 
@@ -45,17 +60,23 @@ class PostController extends AbstractController
             ]);
         }
     }
-  
-    public function createComment(int $id)
+
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     * create comment in view post (if user is logged)
+     */
+    public function createComment(int $id): void
     {
         $user = $_SESSION['user'];
         $post = (new Post($this->getDB()))->findById($id);
         $comment = new Comment($this->getDB());
         $result = $comment->create($_POST);
-      
+
         if ($result)
         {
-            return header('Location: /post/show/'.$id);
+            header('Location: /post/show/'.$id);
         }
 
         $this->twig->display('show_post.html.twig', [

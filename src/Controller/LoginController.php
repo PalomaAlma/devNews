@@ -4,16 +4,31 @@ namespace App\Controller;
 
 use App\Model\Message;
 use App\Model\User;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class LoginController extends AbstractController
 {
 
-    public function index()
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     * login form
+     */
+    public function index(): void
     {
         $this->twig->display('login.html.twig');
     }
 
-    public function login()
+    /**
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @throws LoaderError
+     * login function
+     */
+    public function login():void
     {
         $user = (new User($this->getDB()))->getByEmail($_POST['email']);
 
@@ -25,31 +40,45 @@ class LoginController extends AbstractController
             if ($this->isAdmin())
             {
 
-                return header('Location: /admin');
+                header('Location: /admin');
             }
 
-            return header('Location: /posts/1');
+            header('Location: /posts/1');
         } else {
 
-            return header('Location: /login');
+            header('Location: /login');
         }
 
         $this->twig->display('home.html.twig');
     }
 
-    public function logout()
+    /**
+     * @return void
+     * logout function
+     */
+    public function logout(): void
     {
         session_destroy();
 
-        return header('Location: /login');
+        header('Location: /login');
     }
 
-    public function register()
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     * register form
+     */
+    public function register(): void
     {
         $this->twig->display('register.html.twig');
     }
 
-    public function registerPost()
+    /**
+     * @return void
+     * register in DB
+     */
+    public function registerPost(): void
     {
         $user = new User($this->getDB());
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -57,11 +86,17 @@ class LoginController extends AbstractController
 
         if ($result)
         {
-            return header('Location: /thank-you');
+            header('Location: /thank-you');
         }
     }
 
-    public function registerDone()
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     * confirmation after register
+     */
+    public function registerDone(): void
     {
         $this->twig->display('registerSent.html.twig');
     }
