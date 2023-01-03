@@ -30,7 +30,15 @@ class LoginController extends AbstractController
      */
     public function login():void
     {
-        $user = (new User($this->getDB()))->getByEmail($_POST['email']);
+
+        if (is_null((new User($this->getDB()))->getByEmail($_POST['email'])))
+        {
+            header('Location: /login');
+        }
+        else {
+
+            $user = (new User($this->getDB()))->getByEmail($_POST['email']);
+        }
 
         if (password_verify($_POST['password'], $user->password) && $user->isValid === "1")
         {
