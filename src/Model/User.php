@@ -11,9 +11,9 @@ class User extends Repository {
 
     /**
      * @param string $email
-     * @return User
+     * @return mixed
      */
-    public function getByEmail(string $email): User
+    public function getByEmail(string $email)
     {
         return $this->read('SELECT * FROM user WHERE email = ?', [$email], true);
     }
